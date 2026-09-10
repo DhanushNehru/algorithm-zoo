@@ -1,0 +1,308 @@
+{
+  "id": "separate-chaining",
+  "wing": "hashing",
+  "title": "Hash Table — Separate Chaining",
+  "complexity": {
+    "time": "O(1) average, O(n) worst",
+    "space": "O(n)"
+  },
+  "description": "Each bucket holds a linked list. Colliding keys simply chain below one another — simple, and it never runs out of room, at the cost of pointer-chasing on hot buckets.",
+  "nodes": [
+    {
+      "id": "b0",
+      "position": [
+        -4.4,
+        2.2,
+        0
+      ],
+      "label": "[0]",
+      "value": 2
+    },
+    {
+      "id": "b1",
+      "position": [
+        -2.2,
+        2.2,
+        0
+      ],
+      "label": "[1]",
+      "value": 2
+    },
+    {
+      "id": "b2",
+      "position": [
+        0,
+        2.2,
+        0
+      ],
+      "label": "[2]",
+      "value": 2
+    },
+    {
+      "id": "b3",
+      "position": [
+        2.2,
+        2.2,
+        0
+      ],
+      "label": "[3]",
+      "value": 2
+    },
+    {
+      "id": "b4",
+      "position": [
+        4.4,
+        2.2,
+        0
+      ],
+      "label": "[4]",
+      "value": 2
+    },
+    {
+      "id": "k12",
+      "position": [
+        0,
+        0.8,
+        0
+      ],
+      "label": "12",
+      "hidden": true
+    },
+    {
+      "id": "k7",
+      "position": [
+        0,
+        -0.5,
+        0
+      ],
+      "label": "7",
+      "hidden": true
+    },
+    {
+      "id": "k22",
+      "position": [
+        0,
+        -1.8,
+        0
+      ],
+      "label": "22",
+      "hidden": true
+    },
+    {
+      "id": "k3",
+      "position": [
+        2.2,
+        0.8,
+        0
+      ],
+      "label": "3",
+      "hidden": true
+    },
+    {
+      "id": "k17",
+      "position": [
+        0,
+        -3.1000000000000005,
+        0
+      ],
+      "label": "17",
+      "hidden": true
+    },
+    {
+      "id": "k9",
+      "position": [
+        4.4,
+        0.8,
+        0
+      ],
+      "label": "9",
+      "hidden": true
+    },
+    {
+      "id": "k27",
+      "position": [
+        0,
+        -4.4,
+        0
+      ],
+      "label": "27",
+      "hidden": true
+    }
+  ],
+  "edges": [
+    {
+      "from": "b2",
+      "to": "k12",
+      "hidden": true,
+      "directed": true
+    },
+    {
+      "from": "k12",
+      "to": "k7",
+      "hidden": true,
+      "directed": true
+    },
+    {
+      "from": "k7",
+      "to": "k22",
+      "hidden": true,
+      "directed": true
+    },
+    {
+      "from": "b3",
+      "to": "k3",
+      "hidden": true,
+      "directed": true
+    },
+    {
+      "from": "k22",
+      "to": "k17",
+      "hidden": true,
+      "directed": true
+    },
+    {
+      "from": "b4",
+      "to": "k9",
+      "hidden": true,
+      "directed": true
+    },
+    {
+      "from": "k17",
+      "to": "k27",
+      "hidden": true,
+      "directed": true
+    }
+  ],
+  "steps": [
+    {
+      "action": "highlight",
+      "target": "b2",
+      "note": "hash(12) = 12 mod 5 = 2"
+    },
+    {
+      "action": "insert",
+      "target": "k12",
+      "note": "Bucket 2 is empty — 12 starts the chain"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "b2",
+        "k12"
+      ],
+      "note": "12 linked into bucket 2's chain (length 1)"
+    },
+    {
+      "action": "highlight",
+      "target": "b2",
+      "note": "hash(7) = 7 mod 5 = 2"
+    },
+    {
+      "action": "insert",
+      "target": "k7",
+      "note": "Collision! Bucket 2 already holds 12 — append 7"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "k12",
+        "k7"
+      ],
+      "note": "7 linked into bucket 2's chain (length 2)"
+    },
+    {
+      "action": "highlight",
+      "target": "b2",
+      "note": "hash(22) = 22 mod 5 = 2"
+    },
+    {
+      "action": "insert",
+      "target": "k22",
+      "note": "Collision! Bucket 2 already holds 12 → 7 — append 22"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "k7",
+        "k22"
+      ],
+      "note": "22 linked into bucket 2's chain (length 3)"
+    },
+    {
+      "action": "highlight",
+      "target": "b3",
+      "note": "hash(3) = 3 mod 5 = 3"
+    },
+    {
+      "action": "insert",
+      "target": "k3",
+      "note": "Bucket 3 is empty — 3 starts the chain"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "b3",
+        "k3"
+      ],
+      "note": "3 linked into bucket 3's chain (length 1)"
+    },
+    {
+      "action": "highlight",
+      "target": "b2",
+      "note": "hash(17) = 17 mod 5 = 2"
+    },
+    {
+      "action": "insert",
+      "target": "k17",
+      "note": "Collision! Bucket 2 already holds 12 → 7 → 22 — append 17"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "k22",
+        "k17"
+      ],
+      "note": "17 linked into bucket 2's chain (length 4)"
+    },
+    {
+      "action": "highlight",
+      "target": "b4",
+      "note": "hash(9) = 9 mod 5 = 4"
+    },
+    {
+      "action": "insert",
+      "target": "k9",
+      "note": "Bucket 4 is empty — 9 starts the chain"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "b4",
+        "k9"
+      ],
+      "note": "9 linked into bucket 4's chain (length 1)"
+    },
+    {
+      "action": "highlight",
+      "target": "b2",
+      "note": "hash(27) = 27 mod 5 = 2"
+    },
+    {
+      "action": "insert",
+      "target": "k27",
+      "note": "Collision! Bucket 2 already holds 12 → 7 → 22 → 17 — append 27"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "k17",
+        "k27"
+      ],
+      "note": "27 linked into bucket 2's chain (length 5)"
+    },
+    {
+      "action": "clear",
+      "note": "All 7 keys stored. Longest chain: 5 — lookups cost O(chain length), which stays O(1) on average if the table is resized"
+    }
+  ]
+}

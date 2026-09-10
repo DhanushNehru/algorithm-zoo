@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://algorithm-zoo.dev/schema/exhibit.schema.json",
+  "title": "Algorithm Zoo Exhibit",
+  "type": "object",
+  "required": ["id", "wing", "title", "complexity", "description", "nodes", "steps"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Kebab-case identifier, unique across the zoo. Must match the filename (dijkstra.json -> \"dijkstra\")."
+    },
+    "wing": {
+      "type": "string",
+      "enum": [
+        "sorting",
+        "searching",
+        "graph-traversal",
+        "trees",
+        "hashing",
+        "dynamic-programming",
+        "distributed-systems",
+        "string-algorithms",
+        "compression"
+      ]
+    },
+    "title": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "complexity": {
+      "type": "object",
+      "required": ["time", "space"],
+      "additionalProperties": false,
+      "properties": {
+        "time": { "type": "string" },
+        "space": { "type": "string" }
+      }
+    },
+    "description": { "type": "string", "minLength": 1, "maxLength": 400 },
+    "layout": {
+      "type": "string",
+      "enum": ["graph", "array", "tree"],
+      "default": "graph",
+      "description": "Rendering hint. \"array\" draws nodes as value-height blocks; \"graph\" and \"tree\" draw spheres."
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "items": {
+        "type": "object",
+        "required": ["id", "position"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "position": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "label": { "type": "string" },
+          "value": { "type": "number" },
+          "hidden": { "type": "boolean", "default": false }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to"],
+        "additionalProperties": false,
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "weight": { "type": "number" },
+          "directed": { "type": "boolean", "default": false },
+          "hidden": { "type": "boolean", "default": false }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2000,
+      "items": {
+        "type": "object",
+        "required": ["action", "note"],
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "visit",
+              "highlight",
+              "compare",
+              "swap",
+              "move",
+              "set",
+              "traverse",
+              "relax",
+              "insert",
+              "remove",
+              "link",
+              "unlink",
+              "mark",
+              "dim",
+              "clear"
+            ]
+          },
+          "target": { "type": "string", "description": "Node id (visit, highlight, insert, remove, mark, dim, set, move)." },
+          "targets": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "Two node ids (compare, swap)."
+          },
+          "edge": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "[from, to] node ids (traverse, relax, link, unlink)."
+          },
+          "value": { "type": ["number", "string"], "description": "New value/label (set)." },
+          "position": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 3,
+            "maxItems": 3,
+            "description": "Destination (move)."
+          },
+          "note": { "type": "string", "minLength": 1, "maxLength": 200 }
+        }
+      }
+    }
+  }
+}

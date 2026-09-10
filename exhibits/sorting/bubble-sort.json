@@ -1,0 +1,492 @@
+{
+  "id": "bubble-sort",
+  "wing": "sorting",
+  "title": "Bubble Sort",
+  "complexity": {
+    "time": "O(n²)",
+    "space": "O(1)"
+  },
+  "description": "Repeatedly steps through the list, swapping adjacent elements that are out of order. Large values bubble toward the end on every pass.",
+  "layout": "array",
+  "nodes": [
+    {
+      "id": "n0",
+      "position": [
+        -5.25,
+        0,
+        0
+      ],
+      "value": 7,
+      "label": "7"
+    },
+    {
+      "id": "n1",
+      "position": [
+        -3.75,
+        0,
+        0
+      ],
+      "value": 3,
+      "label": "3"
+    },
+    {
+      "id": "n2",
+      "position": [
+        -2.25,
+        0,
+        0
+      ],
+      "value": 9,
+      "label": "9"
+    },
+    {
+      "id": "n3",
+      "position": [
+        -0.75,
+        0,
+        0
+      ],
+      "value": 1,
+      "label": "1"
+    },
+    {
+      "id": "n4",
+      "position": [
+        0.75,
+        0,
+        0
+      ],
+      "value": 6,
+      "label": "6"
+    },
+    {
+      "id": "n5",
+      "position": [
+        2.25,
+        0,
+        0
+      ],
+      "value": 4,
+      "label": "4"
+    },
+    {
+      "id": "n6",
+      "position": [
+        3.75,
+        0,
+        0
+      ],
+      "value": 8,
+      "label": "8"
+    },
+    {
+      "id": "n7",
+      "position": [
+        5.25,
+        0,
+        0
+      ],
+      "value": 2,
+      "label": "2"
+    }
+  ],
+  "steps": [
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n1"
+      ],
+      "note": "Compare 7 and 3"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n0",
+        "n1"
+      ],
+      "note": "7 > 3 — swap"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n2"
+      ],
+      "note": "Compare 7 and 9"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n2",
+        "n3"
+      ],
+      "note": "Compare 9 and 1"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n2",
+        "n3"
+      ],
+      "note": "9 > 1 — swap"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n2",
+        "n4"
+      ],
+      "note": "Compare 9 and 6"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n2",
+        "n4"
+      ],
+      "note": "9 > 6 — swap"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n2",
+        "n5"
+      ],
+      "note": "Compare 9 and 4"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n2",
+        "n5"
+      ],
+      "note": "9 > 4 — swap"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n2",
+        "n6"
+      ],
+      "note": "Compare 9 and 8"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n2",
+        "n6"
+      ],
+      "note": "9 > 8 — swap"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n2",
+        "n7"
+      ],
+      "note": "Compare 9 and 2"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n2",
+        "n7"
+      ],
+      "note": "9 > 2 — swap"
+    },
+    {
+      "action": "mark",
+      "target": "n2",
+      "note": "9 is in its final place"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n1",
+        "n0"
+      ],
+      "note": "Compare 3 and 7"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n3"
+      ],
+      "note": "Compare 7 and 1"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n0",
+        "n3"
+      ],
+      "note": "7 > 1 — swap"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n4"
+      ],
+      "note": "Compare 7 and 6"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n0",
+        "n4"
+      ],
+      "note": "7 > 6 — swap"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n5"
+      ],
+      "note": "Compare 7 and 4"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n0",
+        "n5"
+      ],
+      "note": "7 > 4 — swap"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n6"
+      ],
+      "note": "Compare 7 and 8"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n6",
+        "n7"
+      ],
+      "note": "Compare 8 and 2"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n6",
+        "n7"
+      ],
+      "note": "8 > 2 — swap"
+    },
+    {
+      "action": "mark",
+      "target": "n6",
+      "note": "8 is in its final place"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n1",
+        "n3"
+      ],
+      "note": "Compare 3 and 1"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n1",
+        "n3"
+      ],
+      "note": "3 > 1 — swap"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n1",
+        "n4"
+      ],
+      "note": "Compare 3 and 6"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n4",
+        "n5"
+      ],
+      "note": "Compare 6 and 4"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n4",
+        "n5"
+      ],
+      "note": "6 > 4 — swap"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n4",
+        "n0"
+      ],
+      "note": "Compare 6 and 7"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n7"
+      ],
+      "note": "Compare 7 and 2"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n0",
+        "n7"
+      ],
+      "note": "7 > 2 — swap"
+    },
+    {
+      "action": "mark",
+      "target": "n0",
+      "note": "7 is in its final place"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n3",
+        "n1"
+      ],
+      "note": "Compare 1 and 3"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n1",
+        "n5"
+      ],
+      "note": "Compare 3 and 4"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n5",
+        "n4"
+      ],
+      "note": "Compare 4 and 6"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n4",
+        "n7"
+      ],
+      "note": "Compare 6 and 2"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n4",
+        "n7"
+      ],
+      "note": "6 > 2 — swap"
+    },
+    {
+      "action": "mark",
+      "target": "n4",
+      "note": "6 is in its final place"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n3",
+        "n1"
+      ],
+      "note": "Compare 1 and 3"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n1",
+        "n5"
+      ],
+      "note": "Compare 3 and 4"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n5",
+        "n7"
+      ],
+      "note": "Compare 4 and 2"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n5",
+        "n7"
+      ],
+      "note": "4 > 2 — swap"
+    },
+    {
+      "action": "mark",
+      "target": "n5",
+      "note": "4 is in its final place"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n3",
+        "n1"
+      ],
+      "note": "Compare 1 and 3"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n1",
+        "n7"
+      ],
+      "note": "Compare 3 and 2"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n1",
+        "n7"
+      ],
+      "note": "3 > 2 — swap"
+    },
+    {
+      "action": "mark",
+      "target": "n1",
+      "note": "3 is in its final place"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n3",
+        "n7"
+      ],
+      "note": "Compare 1 and 2"
+    },
+    {
+      "action": "mark",
+      "target": "n7",
+      "note": "2 is in its final place"
+    },
+    {
+      "action": "mark",
+      "target": "n3",
+      "note": "No swaps this pass — everything left of 2 is already sorted"
+    },
+    {
+      "action": "mark",
+      "target": "n3",
+      "note": "Sorted — largest values bubbled to the right each pass"
+    }
+  ]
+}

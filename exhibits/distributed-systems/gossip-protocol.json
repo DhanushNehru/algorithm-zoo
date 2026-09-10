@@ -1,0 +1,252 @@
+{
+  "id": "gossip-protocol",
+  "wing": "distributed-systems",
+  "title": "Gossip Protocol",
+  "complexity": {
+    "time": "O(log n) rounds",
+    "space": "O(1) per node"
+  },
+  "description": "Every round, each informed node tells one random peer. Information spreads like an epidemic — the informed set doubles per round, so the whole cluster converges in about log n rounds with no coordinator.",
+  "nodes": [
+    {
+      "id": "p0",
+      "position": [
+        3.4,
+        0,
+        0
+      ],
+      "label": "P0"
+    },
+    {
+      "id": "p1",
+      "position": [
+        2.4041630560342617,
+        0,
+        2.4041630560342613
+      ],
+      "label": "P1"
+    },
+    {
+      "id": "p2",
+      "position": [
+        2.0818995585505003e-16,
+        0,
+        3.4
+      ],
+      "label": "P2"
+    },
+    {
+      "id": "p3",
+      "position": [
+        -2.4041630560342613,
+        0,
+        2.4041630560342617
+      ],
+      "label": "P3"
+    },
+    {
+      "id": "p4",
+      "position": [
+        -3.4,
+        0,
+        4.1637991171010006e-16
+      ],
+      "label": "P4"
+    },
+    {
+      "id": "p5",
+      "position": [
+        -2.404163056034262,
+        0,
+        -2.4041630560342613
+      ],
+      "label": "P5"
+    },
+    {
+      "id": "p6",
+      "position": [
+        -6.245698675651501e-16,
+        0,
+        -3.4
+      ],
+      "label": "P6"
+    },
+    {
+      "id": "p7",
+      "position": [
+        2.404163056034261,
+        0,
+        -2.404163056034262
+      ],
+      "label": "P7"
+    }
+  ],
+  "edges": [
+    {
+      "from": "p0",
+      "to": "p3"
+    },
+    {
+      "from": "p0",
+      "to": "p5"
+    },
+    {
+      "from": "p3",
+      "to": "p1"
+    },
+    {
+      "from": "p0",
+      "to": "p2"
+    },
+    {
+      "from": "p5",
+      "to": "p7"
+    },
+    {
+      "from": "p3",
+      "to": "p6"
+    },
+    {
+      "from": "p1",
+      "to": "p4"
+    }
+  ],
+  "steps": [
+    {
+      "action": "visit",
+      "target": "p0",
+      "note": "P0 learns a new value — it alone holds the rumor"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p0",
+        "p3"
+      ],
+      "note": "Round 1: P0 gossips to a random peer, P3"
+    },
+    {
+      "action": "visit",
+      "target": "p3",
+      "note": "P3 is now infected — informed nodes roughly double each round"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p0",
+        "p5"
+      ],
+      "note": "Round 2: P0 gossips to a random peer, P5"
+    },
+    {
+      "action": "visit",
+      "target": "p5",
+      "note": "P5 is now infected — informed nodes roughly double each round"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p3",
+        "p1"
+      ],
+      "note": "Round 2: P3 gossips to a random peer, P1"
+    },
+    {
+      "action": "visit",
+      "target": "p1",
+      "note": "P1 is now infected — informed nodes roughly double each round"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p0",
+        "p2"
+      ],
+      "note": "Round 3: P0 gossips to a random peer, P2"
+    },
+    {
+      "action": "visit",
+      "target": "p2",
+      "note": "P2 is now infected — informed nodes roughly double each round"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p5",
+        "p7"
+      ],
+      "note": "Round 3: P5 gossips to a random peer, P7"
+    },
+    {
+      "action": "visit",
+      "target": "p7",
+      "note": "P7 is now infected — informed nodes roughly double each round"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p3",
+        "p6"
+      ],
+      "note": "Round 3: P3 gossips to a random peer, P6"
+    },
+    {
+      "action": "visit",
+      "target": "p6",
+      "note": "P6 is now infected — informed nodes roughly double each round"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p1",
+        "p4"
+      ],
+      "note": "Round 3: P1 gossips to a random peer, P4"
+    },
+    {
+      "action": "visit",
+      "target": "p4",
+      "note": "P4 is now infected — informed nodes roughly double each round"
+    },
+    {
+      "action": "mark",
+      "target": "p0",
+      "note": "All 8 nodes converged in 3 rounds ≈ log₂(8)"
+    },
+    {
+      "action": "mark",
+      "target": "p1",
+      "note": "All 8 nodes converged in 3 rounds ≈ log₂(8)"
+    },
+    {
+      "action": "mark",
+      "target": "p2",
+      "note": "All 8 nodes converged in 3 rounds ≈ log₂(8)"
+    },
+    {
+      "action": "mark",
+      "target": "p3",
+      "note": "All 8 nodes converged in 3 rounds ≈ log₂(8)"
+    },
+    {
+      "action": "mark",
+      "target": "p4",
+      "note": "All 8 nodes converged in 3 rounds ≈ log₂(8)"
+    },
+    {
+      "action": "mark",
+      "target": "p5",
+      "note": "All 8 nodes converged in 3 rounds ≈ log₂(8)"
+    },
+    {
+      "action": "mark",
+      "target": "p6",
+      "note": "All 8 nodes converged in 3 rounds ≈ log₂(8)"
+    },
+    {
+      "action": "mark",
+      "target": "p7",
+      "note": "All 8 nodes converged in 3 rounds ≈ log₂(8)"
+    }
+  ]
+}

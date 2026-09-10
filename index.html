@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Algorithm Zoo</title>
+  <meta name="description" content="Classic algorithms and data structures, running live as animated 3D exhibits. Every exhibit is a JSON file — add yours." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas id="zoo" aria-label="3D view of the Algorithm Zoo"></canvas>
+
+  <header id="masthead">
+    <h1>Algorithm Zoo</h1>
+    <p>Classic algorithms, alive in 3D. Every exhibit here is a JSON file — <a href="https://github.com/your-name/algorithm-zoo/blob/main/CONTRIBUTING.md">add yours</a>.</p>
+  </header>
+
+  <nav id="index" aria-label="Exhibit index">
+    <div id="index-list"></div>
+    <button id="btn-overview">Back to overview</button>
+  </nav>
+
+  <aside id="placard" hidden>
+    <p id="ex-wing" class="wing-tag"></p>
+    <h2 id="ex-title"></h2>
+    <dl class="complexity">
+      <div><dt>Time</dt><dd id="ex-time"></dd></div>
+      <div><dt>Space</dt><dd id="ex-space"></dd></div>
+    </dl>
+    <p id="ex-desc"></p>
+    <p id="ex-caption" aria-live="polite"></p>
+  </aside>
+
+  <div id="playbar" hidden>
+    <button id="btn-reset" aria-label="Restart">⟲</button>
+    <button id="btn-step-back" aria-label="Step back">⏮</button>
+    <button id="btn-play" aria-label="Play">▶</button>
+    <button id="btn-step-fwd" aria-label="Step forward">⏭</button>
+    <label class="speed-wrap">
+      <select id="speed" aria-label="Playback speed">
+        <option value="0.5">0.5×</option>
+        <option value="1" selected>1×</option>
+        <option value="2">2×</option>
+        <option value="4">4×</option>
+      </select>
+    </label>
+    <div id="progress"><div id="progress-fill"></div></div>
+    <span id="progress-text">0 / 0</span>
+  </div>
+
+  <p id="load-error" role="alert" hidden></p>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

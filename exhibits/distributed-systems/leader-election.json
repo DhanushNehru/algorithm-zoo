@@ -1,0 +1,262 @@
+{
+  "id": "leader-election",
+  "wing": "distributed-systems",
+  "title": "Ring Leader Election",
+  "complexity": {
+    "time": "O(n²) messages worst case",
+    "space": "O(1) per node"
+  },
+  "description": "Processes pass candidate ids around a ring; each node forwards the larger of its own id and the incoming one. When an id survives a full lap, that process becomes leader — no central coordinator needed.",
+  "nodes": [
+    {
+      "id": "p3",
+      "position": [
+        1.9594348786357652e-16,
+        0,
+        -3.2
+      ],
+      "label": "id 3"
+    },
+    {
+      "id": "p7",
+      "position": [
+        2.7712812921102037,
+        0,
+        -1.6
+      ],
+      "label": "id 7"
+    },
+    {
+      "id": "p1",
+      "position": [
+        2.771281292110204,
+        0,
+        1.5999999999999996
+      ],
+      "label": "id 1"
+    },
+    {
+      "id": "p5",
+      "position": [
+        1.9594348786357652e-16,
+        0,
+        3.2
+      ],
+      "label": "id 5"
+    },
+    {
+      "id": "p9",
+      "position": [
+        -2.7712812921102032,
+        0,
+        1.6000000000000012
+      ],
+      "label": "id 9"
+    },
+    {
+      "id": "p2",
+      "position": [
+        -2.7712812921102037,
+        0,
+        -1.6000000000000005
+      ],
+      "label": "id 2"
+    }
+  ],
+  "edges": [
+    {
+      "from": "p3",
+      "to": "p7",
+      "directed": true
+    },
+    {
+      "from": "p7",
+      "to": "p1",
+      "directed": true
+    },
+    {
+      "from": "p1",
+      "to": "p5",
+      "directed": true
+    },
+    {
+      "from": "p5",
+      "to": "p9",
+      "directed": true
+    },
+    {
+      "from": "p9",
+      "to": "p2",
+      "directed": true
+    },
+    {
+      "from": "p2",
+      "to": "p3",
+      "directed": true
+    }
+  ],
+  "steps": [
+    {
+      "action": "highlight",
+      "target": "p3",
+      "note": "The old leader is gone — process 3 notices and starts an election, passing its id around the ring"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p3",
+        "p7"
+      ],
+      "note": "Token ⟨3⟩ travels 3 → 7"
+    },
+    {
+      "action": "visit",
+      "target": "p7",
+      "note": "7 > 3 — 7 replaces the token with its own id"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p7",
+        "p1"
+      ],
+      "note": "Token ⟨7⟩ travels 7 → 1"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "p1",
+        "p7"
+      ],
+      "note": "1 < 7 — 1 forwards the token unchanged"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p1",
+        "p5"
+      ],
+      "note": "Token ⟨7⟩ travels 1 → 5"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "p5",
+        "p7"
+      ],
+      "note": "5 < 7 — 5 forwards the token unchanged"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p5",
+        "p9"
+      ],
+      "note": "Token ⟨7⟩ travels 5 → 9"
+    },
+    {
+      "action": "visit",
+      "target": "p9",
+      "note": "9 > 7 — 9 replaces the token with its own id"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p9",
+        "p2"
+      ],
+      "note": "Token ⟨9⟩ travels 9 → 2"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "p2",
+        "p9"
+      ],
+      "note": "2 < 9 — 2 forwards the token unchanged"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p2",
+        "p3"
+      ],
+      "note": "Token ⟨9⟩ travels 2 → 3"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "p3",
+        "p9"
+      ],
+      "note": "3 < 9 — 3 forwards the token unchanged"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p3",
+        "p7"
+      ],
+      "note": "Token ⟨9⟩ travels 3 → 7"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "p7",
+        "p9"
+      ],
+      "note": "7 < 9 — 7 forwards the token unchanged"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p7",
+        "p1"
+      ],
+      "note": "Token ⟨9⟩ travels 7 → 1"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "p1",
+        "p9"
+      ],
+      "note": "1 < 9 — 1 forwards the token unchanged"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p1",
+        "p5"
+      ],
+      "note": "Token ⟨9⟩ travels 1 → 5"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "p5",
+        "p9"
+      ],
+      "note": "5 < 9 — 5 forwards the token unchanged"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "p5",
+        "p9"
+      ],
+      "note": "Token ⟨9⟩ travels 5 → 9"
+    },
+    {
+      "action": "mark",
+      "target": "p9",
+      "note": "Id 9 receives its own id back — it has beaten every process on the ring"
+    },
+    {
+      "action": "set",
+      "target": "p9",
+      "value": "LEADER 9",
+      "note": "Process 9 declares itself leader and announces it around the ring"
+    }
+  ]
+}

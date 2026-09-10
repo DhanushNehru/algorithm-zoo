@@ -1,0 +1,204 @@
+{
+  "id": "binary-search",
+  "wing": "searching",
+  "title": "Binary Search",
+  "complexity": {
+    "time": "O(log n)",
+    "space": "O(1)"
+  },
+  "description": "Halves a sorted search window on every probe. Ten elements need at most four probes; a billion need only thirty.",
+  "layout": "array",
+  "nodes": [
+    {
+      "id": "n0",
+      "position": [
+        -6.3,
+        0,
+        0
+      ],
+      "value": 2,
+      "label": "2"
+    },
+    {
+      "id": "n1",
+      "position": [
+        -4.8999999999999995,
+        0,
+        0
+      ],
+      "value": 5,
+      "label": "5"
+    },
+    {
+      "id": "n2",
+      "position": [
+        -3.5,
+        0,
+        0
+      ],
+      "value": 8,
+      "label": "8"
+    },
+    {
+      "id": "n3",
+      "position": [
+        -2.0999999999999996,
+        0,
+        0
+      ],
+      "value": 12,
+      "label": "12"
+    },
+    {
+      "id": "n4",
+      "position": [
+        -0.7,
+        0,
+        0
+      ],
+      "value": 16,
+      "label": "16"
+    },
+    {
+      "id": "n5",
+      "position": [
+        0.7,
+        0,
+        0
+      ],
+      "value": 23,
+      "label": "23"
+    },
+    {
+      "id": "n6",
+      "position": [
+        2.0999999999999996,
+        0,
+        0
+      ],
+      "value": 38,
+      "label": "38"
+    },
+    {
+      "id": "n7",
+      "position": [
+        3.5,
+        0,
+        0
+      ],
+      "value": 56,
+      "label": "56"
+    },
+    {
+      "id": "n8",
+      "position": [
+        4.8999999999999995,
+        0,
+        0
+      ],
+      "value": 72,
+      "label": "72"
+    },
+    {
+      "id": "n9",
+      "position": [
+        6.3,
+        0,
+        0
+      ],
+      "value": 91,
+      "label": "91"
+    }
+  ],
+  "steps": [
+    {
+      "action": "highlight",
+      "target": "n5",
+      "note": "Searching for 23 in a sorted array"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n9"
+      ],
+      "note": "Search window: index 0–9"
+    },
+    {
+      "action": "visit",
+      "target": "n4",
+      "note": "Check the middle: 16"
+    },
+    {
+      "action": "dim",
+      "target": "n0",
+      "note": "16 < 23 — discard the left half"
+    },
+    {
+      "action": "dim",
+      "target": "n1",
+      "note": "16 < 23 — discard the left half"
+    },
+    {
+      "action": "dim",
+      "target": "n2",
+      "note": "16 < 23 — discard the left half"
+    },
+    {
+      "action": "dim",
+      "target": "n3",
+      "note": "16 < 23 — discard the left half"
+    },
+    {
+      "action": "dim",
+      "target": "n4",
+      "note": "16 < 23 — discard the left half"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n5",
+        "n9"
+      ],
+      "note": "Search window: index 5–9"
+    },
+    {
+      "action": "visit",
+      "target": "n7",
+      "note": "Check the middle: 56"
+    },
+    {
+      "action": "dim",
+      "target": "n7",
+      "note": "56 > 23 — discard the right half"
+    },
+    {
+      "action": "dim",
+      "target": "n8",
+      "note": "56 > 23 — discard the right half"
+    },
+    {
+      "action": "dim",
+      "target": "n9",
+      "note": "56 > 23 — discard the right half"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n5",
+        "n6"
+      ],
+      "note": "Search window: index 5–6"
+    },
+    {
+      "action": "visit",
+      "target": "n5",
+      "note": "Check the middle: 23"
+    },
+    {
+      "action": "mark",
+      "target": "n5",
+      "note": "23 = 23 — found in 3 probes"
+    }
+  ]
+}

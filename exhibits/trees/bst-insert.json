@@ -1,0 +1,380 @@
+{
+  "id": "bst-insert",
+  "wing": "trees",
+  "title": "Binary Search Tree — Insertion",
+  "complexity": {
+    "time": "O(h), O(log n) if balanced",
+    "space": "O(h)"
+  },
+  "description": "Each insert walks from the root — left if smaller, right if larger — until it finds an empty slot. The tree's shape depends entirely on insertion order.",
+  "layout": "tree",
+  "nodes": [
+    {
+      "id": "v50",
+      "position": [
+        0,
+        3.6,
+        0
+      ],
+      "label": "50",
+      "value": 50,
+      "hidden": false
+    },
+    {
+      "id": "v30",
+      "position": [
+        -3.2,
+        2.1,
+        0
+      ],
+      "label": "30",
+      "value": 30,
+      "hidden": true
+    },
+    {
+      "id": "v20",
+      "position": [
+        -4.800000000000001,
+        0.6000000000000001,
+        0
+      ],
+      "label": "20",
+      "value": 20,
+      "hidden": true
+    },
+    {
+      "id": "v40",
+      "position": [
+        -1.6,
+        0.6000000000000001,
+        0
+      ],
+      "label": "40",
+      "value": 40,
+      "hidden": true
+    },
+    {
+      "id": "v35",
+      "position": [
+        -2.4000000000000004,
+        -0.8999999999999999,
+        0
+      ],
+      "label": "35",
+      "value": 35,
+      "hidden": true
+    },
+    {
+      "id": "v70",
+      "position": [
+        3.2,
+        2.1,
+        0
+      ],
+      "label": "70",
+      "value": 70,
+      "hidden": true
+    },
+    {
+      "id": "v60",
+      "position": [
+        1.6,
+        0.6000000000000001,
+        0
+      ],
+      "label": "60",
+      "value": 60,
+      "hidden": true
+    },
+    {
+      "id": "v80",
+      "position": [
+        4.800000000000001,
+        0.6000000000000001,
+        0
+      ],
+      "label": "80",
+      "value": 80,
+      "hidden": true
+    }
+  ],
+  "edges": [
+    {
+      "from": "v50",
+      "to": "v30",
+      "hidden": true
+    },
+    {
+      "from": "v50",
+      "to": "v70",
+      "hidden": true
+    },
+    {
+      "from": "v30",
+      "to": "v20",
+      "hidden": true
+    },
+    {
+      "from": "v30",
+      "to": "v40",
+      "hidden": true
+    },
+    {
+      "from": "v70",
+      "to": "v60",
+      "hidden": true
+    },
+    {
+      "from": "v70",
+      "to": "v80",
+      "hidden": true
+    },
+    {
+      "from": "v40",
+      "to": "v35",
+      "hidden": true
+    }
+  ],
+  "steps": [
+    {
+      "action": "visit",
+      "target": "v50",
+      "note": "50 is the first insert — it becomes the root"
+    },
+    {
+      "action": "mark",
+      "target": "v50",
+      "note": "Root placed"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v30",
+        "v50"
+      ],
+      "note": "Insert 30: compare with 50 — go left"
+    },
+    {
+      "action": "insert",
+      "target": "v30",
+      "note": "Empty left child — insert 30 here"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "v50",
+        "v30"
+      ],
+      "note": "30 attached under 50"
+    },
+    {
+      "action": "mark",
+      "target": "v30",
+      "note": "30 placed at depth 1"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v70",
+        "v50"
+      ],
+      "note": "Insert 70: compare with 50 — go right"
+    },
+    {
+      "action": "insert",
+      "target": "v70",
+      "note": "Empty right child — insert 70 here"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "v50",
+        "v70"
+      ],
+      "note": "70 attached under 50"
+    },
+    {
+      "action": "mark",
+      "target": "v70",
+      "note": "70 placed at depth 1"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v20",
+        "v50"
+      ],
+      "note": "Insert 20: compare with 50 — go left"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v20",
+        "v30"
+      ],
+      "note": "Insert 20: compare with 30 — go left"
+    },
+    {
+      "action": "insert",
+      "target": "v20",
+      "note": "Empty left child — insert 20 here"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "v30",
+        "v20"
+      ],
+      "note": "20 attached under 30"
+    },
+    {
+      "action": "mark",
+      "target": "v20",
+      "note": "20 placed at depth 2"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v40",
+        "v50"
+      ],
+      "note": "Insert 40: compare with 50 — go left"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v40",
+        "v30"
+      ],
+      "note": "Insert 40: compare with 30 — go right"
+    },
+    {
+      "action": "insert",
+      "target": "v40",
+      "note": "Empty right child — insert 40 here"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "v30",
+        "v40"
+      ],
+      "note": "40 attached under 30"
+    },
+    {
+      "action": "mark",
+      "target": "v40",
+      "note": "40 placed at depth 2"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v60",
+        "v50"
+      ],
+      "note": "Insert 60: compare with 50 — go right"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v60",
+        "v70"
+      ],
+      "note": "Insert 60: compare with 70 — go left"
+    },
+    {
+      "action": "insert",
+      "target": "v60",
+      "note": "Empty left child — insert 60 here"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "v70",
+        "v60"
+      ],
+      "note": "60 attached under 70"
+    },
+    {
+      "action": "mark",
+      "target": "v60",
+      "note": "60 placed at depth 2"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v80",
+        "v50"
+      ],
+      "note": "Insert 80: compare with 50 — go right"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v80",
+        "v70"
+      ],
+      "note": "Insert 80: compare with 70 — go right"
+    },
+    {
+      "action": "insert",
+      "target": "v80",
+      "note": "Empty right child — insert 80 here"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "v70",
+        "v80"
+      ],
+      "note": "80 attached under 70"
+    },
+    {
+      "action": "mark",
+      "target": "v80",
+      "note": "80 placed at depth 2"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v35",
+        "v50"
+      ],
+      "note": "Insert 35: compare with 50 — go left"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v35",
+        "v30"
+      ],
+      "note": "Insert 35: compare with 30 — go right"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "v35",
+        "v40"
+      ],
+      "note": "Insert 35: compare with 40 — go left"
+    },
+    {
+      "action": "insert",
+      "target": "v35",
+      "note": "Empty left child — insert 35 here"
+    },
+    {
+      "action": "link",
+      "edge": [
+        "v40",
+        "v35"
+      ],
+      "note": "35 attached under 40"
+    },
+    {
+      "action": "mark",
+      "target": "v35",
+      "note": "35 placed at depth 3"
+    }
+  ]
+}
