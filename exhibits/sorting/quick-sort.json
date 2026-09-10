@@ -1,0 +1,297 @@
+{
+  "id": "quick-sort",
+  "wing": "sorting",
+  "title": "Quick Sort",
+  "complexity": {
+    "time": "O(n log n) average, O(n²) worst",
+    "space": "O(log n)"
+  },
+  "description": "Picks a pivot, partitions the array into smaller-than and larger-than halves, then recursively sorts each half. Each pivot lands in its final position immediately.",
+  "layout": "array",
+  "nodes": [
+    {
+      "id": "n0",
+      "position": [
+        -4.5,
+        0,
+        0
+      ],
+      "value": 6,
+      "label": "6"
+    },
+    {
+      "id": "n1",
+      "position": [
+        -3,
+        0,
+        0
+      ],
+      "value": 2,
+      "label": "2"
+    },
+    {
+      "id": "n2",
+      "position": [
+        -1.5,
+        0,
+        0
+      ],
+      "value": 8,
+      "label": "8"
+    },
+    {
+      "id": "n3",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "value": 4,
+      "label": "4"
+    },
+    {
+      "id": "n4",
+      "position": [
+        1.5,
+        0,
+        0
+      ],
+      "value": 9,
+      "label": "9"
+    },
+    {
+      "id": "n5",
+      "position": [
+        3,
+        0,
+        0
+      ],
+      "value": 1,
+      "label": "1"
+    },
+    {
+      "id": "n6",
+      "position": [
+        4.5,
+        0,
+        0
+      ],
+      "value": 5,
+      "label": "5"
+    }
+  ],
+  "steps": [
+    {
+      "action": "highlight",
+      "target": "n6",
+      "note": "Pivot: 5 (last element of this range)"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n6"
+      ],
+      "note": "Is 6 < pivot 5?"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n1",
+        "n6"
+      ],
+      "note": "Is 2 < pivot 5?"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n0",
+        "n1"
+      ],
+      "note": "2 < 5 — move it into the left partition"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n2",
+        "n6"
+      ],
+      "note": "Is 8 < pivot 5?"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n3",
+        "n6"
+      ],
+      "note": "Is 4 < pivot 5?"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n0",
+        "n3"
+      ],
+      "note": "4 < 5 — move it into the left partition"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n4",
+        "n6"
+      ],
+      "note": "Is 9 < pivot 5?"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n5",
+        "n6"
+      ],
+      "note": "Is 1 < pivot 5?"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n2",
+        "n5"
+      ],
+      "note": "1 < 5 — move it into the left partition"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n0",
+        "n6"
+      ],
+      "note": "Place pivot 5 between the partitions"
+    },
+    {
+      "action": "mark",
+      "target": "n6",
+      "note": "5 is in its final position"
+    },
+    {
+      "action": "highlight",
+      "target": "n5",
+      "note": "Pivot: 1 (last element of this range)"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n1",
+        "n5"
+      ],
+      "note": "Is 2 < pivot 1?"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n3",
+        "n5"
+      ],
+      "note": "Is 4 < pivot 1?"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n1",
+        "n5"
+      ],
+      "note": "Place pivot 1 between the partitions"
+    },
+    {
+      "action": "mark",
+      "target": "n5",
+      "note": "1 is in its final position"
+    },
+    {
+      "action": "highlight",
+      "target": "n1",
+      "note": "Pivot: 2 (last element of this range)"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n3",
+        "n1"
+      ],
+      "note": "Is 4 < pivot 2?"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n3",
+        "n1"
+      ],
+      "note": "Place pivot 2 between the partitions"
+    },
+    {
+      "action": "mark",
+      "target": "n1",
+      "note": "2 is in its final position"
+    },
+    {
+      "action": "mark",
+      "target": "n3",
+      "note": "4 — single element, already sorted"
+    },
+    {
+      "action": "highlight",
+      "target": "n0",
+      "note": "Pivot: 6 (last element of this range)"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n4",
+        "n0"
+      ],
+      "note": "Is 9 < pivot 6?"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n2",
+        "n0"
+      ],
+      "note": "Is 8 < pivot 6?"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n4",
+        "n0"
+      ],
+      "note": "Place pivot 6 between the partitions"
+    },
+    {
+      "action": "mark",
+      "target": "n0",
+      "note": "6 is in its final position"
+    },
+    {
+      "action": "highlight",
+      "target": "n4",
+      "note": "Pivot: 9 (last element of this range)"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n2",
+        "n4"
+      ],
+      "note": "Is 8 < pivot 9?"
+    },
+    {
+      "action": "mark",
+      "target": "n4",
+      "note": "9 is in its final position"
+    },
+    {
+      "action": "mark",
+      "target": "n2",
+      "note": "8 — single element, already sorted"
+    }
+  ]
+}

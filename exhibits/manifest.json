@@ -1,0 +1,14 @@
+{
+  "exhibits": [
+    "distributed-systems/gossip-protocol.json",
+    "distributed-systems/leader-election.json",
+    "graph-traversal/bfs.json",
+    "graph-traversal/dijkstra.json",
+    "hashing/separate-chaining.json",
+    "searching/binary-search.json",
+    "sorting/bubble-sort.json",
+    "sorting/insertion-sort.json",
+    "sorting/quick-sort.json",
+    "trees/bst-insert.json"
+  ]
+}

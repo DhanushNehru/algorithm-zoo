@@ -1,0 +1,282 @@
+{
+  "id": "insertion-sort",
+  "wing": "sorting",
+  "title": "Insertion Sort",
+  "complexity": {
+    "time": "O(n²)",
+    "space": "O(1)"
+  },
+  "description": "Grows a sorted prefix one element at a time, shifting larger elements right until the new element finds its slot — how most people sort a hand of cards.",
+  "layout": "array",
+  "nodes": [
+    {
+      "id": "n0",
+      "position": [
+        -3.75,
+        0,
+        0
+      ],
+      "value": 5,
+      "label": "5"
+    },
+    {
+      "id": "n1",
+      "position": [
+        -2.25,
+        0,
+        0
+      ],
+      "value": 2,
+      "label": "2"
+    },
+    {
+      "id": "n2",
+      "position": [
+        -0.75,
+        0,
+        0
+      ],
+      "value": 9,
+      "label": "9"
+    },
+    {
+      "id": "n3",
+      "position": [
+        0.75,
+        0,
+        0
+      ],
+      "value": 1,
+      "label": "1"
+    },
+    {
+      "id": "n4",
+      "position": [
+        2.25,
+        0,
+        0
+      ],
+      "value": 7,
+      "label": "7"
+    },
+    {
+      "id": "n5",
+      "position": [
+        3.75,
+        0,
+        0
+      ],
+      "value": 3,
+      "label": "3"
+    }
+  ],
+  "steps": [
+    {
+      "action": "mark",
+      "target": "n0",
+      "note": "5 alone is a sorted prefix of length 1"
+    },
+    {
+      "action": "highlight",
+      "target": "n1",
+      "note": "Take 2 — insert it into the sorted prefix"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n1"
+      ],
+      "note": "5 > 2 — shift it right"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n0",
+        "n1"
+      ],
+      "note": "Move 2 one slot left"
+    },
+    {
+      "action": "mark",
+      "target": "n1",
+      "note": "2 inserted — sorted prefix now length 2"
+    },
+    {
+      "action": "highlight",
+      "target": "n2",
+      "note": "Take 9 — insert it into the sorted prefix"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n2"
+      ],
+      "note": "5 ≤ 9 — found its slot"
+    },
+    {
+      "action": "mark",
+      "target": "n2",
+      "note": "9 inserted — sorted prefix now length 3"
+    },
+    {
+      "action": "highlight",
+      "target": "n3",
+      "note": "Take 1 — insert it into the sorted prefix"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n2",
+        "n3"
+      ],
+      "note": "9 > 1 — shift it right"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n2",
+        "n3"
+      ],
+      "note": "Move 1 one slot left"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n3"
+      ],
+      "note": "5 > 1 — shift it right"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n0",
+        "n3"
+      ],
+      "note": "Move 1 one slot left"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n1",
+        "n3"
+      ],
+      "note": "2 > 1 — shift it right"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n1",
+        "n3"
+      ],
+      "note": "Move 1 one slot left"
+    },
+    {
+      "action": "mark",
+      "target": "n3",
+      "note": "1 inserted — sorted prefix now length 4"
+    },
+    {
+      "action": "highlight",
+      "target": "n4",
+      "note": "Take 7 — insert it into the sorted prefix"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n2",
+        "n4"
+      ],
+      "note": "9 > 7 — shift it right"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n2",
+        "n4"
+      ],
+      "note": "Move 7 one slot left"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n4"
+      ],
+      "note": "5 ≤ 7 — found its slot"
+    },
+    {
+      "action": "mark",
+      "target": "n4",
+      "note": "7 inserted — sorted prefix now length 5"
+    },
+    {
+      "action": "highlight",
+      "target": "n5",
+      "note": "Take 3 — insert it into the sorted prefix"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n2",
+        "n5"
+      ],
+      "note": "9 > 3 — shift it right"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n2",
+        "n5"
+      ],
+      "note": "Move 3 one slot left"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n4",
+        "n5"
+      ],
+      "note": "7 > 3 — shift it right"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n4",
+        "n5"
+      ],
+      "note": "Move 3 one slot left"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n0",
+        "n5"
+      ],
+      "note": "5 > 3 — shift it right"
+    },
+    {
+      "action": "swap",
+      "targets": [
+        "n0",
+        "n5"
+      ],
+      "note": "Move 3 one slot left"
+    },
+    {
+      "action": "compare",
+      "targets": [
+        "n1",
+        "n5"
+      ],
+      "note": "2 ≤ 3 — found its slot"
+    },
+    {
+      "action": "mark",
+      "target": "n5",
+      "note": "3 inserted — sorted prefix now length 6"
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+{
+  "id": "dijkstra",
+  "wing": "graph-traversal",
+  "title": "Dijkstra's Algorithm",
+  "complexity": {
+    "time": "O((V + E) log V)",
+    "space": "O(V)"
+  },
+  "description": "Finds shortest paths from a source by always settling the closest unsettled node, then relaxing its edges. Greedy, and provably correct when weights are non-negative.",
+  "nodes": [
+    {
+      "id": "A",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "label": "A:0"
+    },
+    {
+      "id": "B",
+      "position": [
+        -2.4,
+        0,
+        -2.2
+      ],
+      "label": "B:∞"
+    },
+    {
+      "id": "C",
+      "position": [
+        2.4,
+        0,
+        -2.2
+      ],
+      "label": "C:∞"
+    },
+    {
+      "id": "D",
+      "position": [
+        -3.6,
+        0,
+        1.4
+      ],
+      "label": "D:∞"
+    },
+    {
+      "id": "E",
+      "position": [
+        0,
+        0,
+        2.8
+      ],
+      "label": "E:∞"
+    },
+    {
+      "id": "F",
+      "position": [
+        3.6,
+        0,
+        1.4
+      ],
+      "label": "F:∞"
+    },
+    {
+      "id": "G",
+      "position": [
+        0,
+        0,
+        -4.4
+      ],
+      "label": "G:∞"
+    }
+  ],
+  "edges": [
+    {
+      "from": "A",
+      "to": "B",
+      "weight": 4
+    },
+    {
+      "from": "A",
+      "to": "C",
+      "weight": 2
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "weight": 7
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "weight": 3
+    },
+    {
+      "from": "B",
+      "to": "G",
+      "weight": 6
+    },
+    {
+      "from": "C",
+      "to": "F",
+      "weight": 3
+    },
+    {
+      "from": "C",
+      "to": "G",
+      "weight": 5
+    },
+    {
+      "from": "D",
+      "to": "E",
+      "weight": 2
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "weight": 4
+    }
+  ],
+  "steps": [
+    {
+      "action": "set",
+      "target": "A",
+      "value": "A:0",
+      "note": "Source A gets distance 0; everything else is ∞"
+    },
+    {
+      "action": "visit",
+      "target": "A",
+      "note": "Pop A (distance 0) — the closest unsettled node"
+    },
+    {
+      "action": "relax",
+      "edge": [
+        "A",
+        "B"
+      ],
+      "note": "Relax A→B: 0 + 4 = 4 vs ∞"
+    },
+    {
+      "action": "set",
+      "target": "B",
+      "value": "B:4",
+      "note": "Shorter path found — distance to B is now 4"
+    },
+    {
+      "action": "relax",
+      "edge": [
+        "A",
+        "C"
+      ],
+      "note": "Relax A→C: 0 + 2 = 2 vs ∞"
+    },
+    {
+      "action": "set",
+      "target": "C",
+      "value": "C:2",
+      "note": "Shorter path found — distance to C is now 2"
+    },
+    {
+      "action": "relax",
+      "edge": [
+        "A",
+        "E"
+      ],
+      "note": "Relax A→E: 0 + 7 = 7 vs ∞"
+    },
+    {
+      "action": "set",
+      "target": "E",
+      "value": "E:7",
+      "note": "Shorter path found — distance to E is now 7"
+    },
+    {
+      "action": "mark",
+      "target": "A",
+      "note": "A settled at distance 0 — it will never improve"
+    },
+    {
+      "action": "visit",
+      "target": "C",
+      "note": "Pop C (distance 2) — the closest unsettled node"
+    },
+    {
+      "action": "relax",
+      "edge": [
+        "C",
+        "F"
+      ],
+      "note": "Relax C→F: 2 + 3 = 5 vs ∞"
+    },
+    {
+      "action": "set",
+      "target": "F",
+      "value": "F:5",
+      "note": "Shorter path found — distance to F is now 5"
+    },
+    {
+      "action": "relax",
+      "edge": [
+        "C",
+        "G"
+      ],
+      "note": "Relax C→G: 2 + 5 = 7 vs ∞"
+    },
+    {
+      "action": "set",
+      "target": "G",
+      "value": "G:7",
+      "note": "Shorter path found — distance to G is now 7"
+    },
+    {
+      "action": "mark",
+      "target": "C",
+      "note": "C settled at distance 2 — it will never improve"
+    },
+    {
+      "action": "visit",
+      "target": "B",
+      "note": "Pop B (distance 4) — the closest unsettled node"
+    },
+    {
+      "action": "relax",
+      "edge": [
+        "B",
+        "D"
+      ],
+      "note": "Relax B→D: 4 + 3 = 7 vs ∞"
+    },
+    {
+      "action": "set",
+      "target": "D",
+      "value": "D:7",
+      "note": "Shorter path found — distance to D is now 7"
+    },
+    {
+      "action": "relax",
+      "edge": [
+        "B",
+        "G"
+      ],
+      "note": "Relax B→G: 4 + 6 = 10 vs 7"
+    },
+    {
+      "action": "mark",
+      "target": "B",
+      "note": "B settled at distance 4 — it will never improve"
+    },
+    {
+      "action": "visit",
+      "target": "F",
+      "note": "Pop F (distance 5) — the closest unsettled node"
+    },
+    {
+      "action": "relax",
+      "edge": [
+        "F",
+        "E"
+      ],
+      "note": "Relax F→E: 5 + 4 = 9 vs 7"
+    },
+    {
+      "action": "mark",
+      "target": "F",
+      "note": "F settled at distance 5 — it will never improve"
+    },
+    {
+      "action": "visit",
+      "target": "E",
+      "note": "Pop E (distance 7) — the closest unsettled node"
+    },
+    {
+      "action": "relax",
+      "edge": [
+        "E",
+        "D"
+      ],
+      "note": "Relax E→D: 7 + 2 = 9 vs 7"
+    },
+    {
+      "action": "mark",
+      "target": "E",
+      "note": "E settled at distance 7 — it will never improve"
+    },
+    {
+      "action": "visit",
+      "target": "G",
+      "note": "Pop G (distance 7) — the closest unsettled node"
+    },
+    {
+      "action": "mark",
+      "target": "G",
+      "note": "G settled at distance 7 — it will never improve"
+    },
+    {
+      "action": "visit",
+      "target": "D",
+      "note": "Pop D (distance 7) — the closest unsettled node"
+    },
+    {
+      "action": "mark",
+      "target": "D",
+      "note": "D settled at distance 7 — it will never improve"
+    }
+  ]
+}

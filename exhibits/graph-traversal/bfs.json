@@ -1,0 +1,268 @@
+{
+  "id": "bfs",
+  "wing": "graph-traversal",
+  "title": "Breadth-First Search",
+  "complexity": {
+    "time": "O(V + E)",
+    "space": "O(V)"
+  },
+  "description": "Explores the graph in rings: all nodes one hop away, then two hops, then three. A queue guarantees the frontier expands evenly — which is why BFS finds shortest paths in unweighted graphs.",
+  "nodes": [
+    {
+      "id": "A",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "label": "A"
+    },
+    {
+      "id": "B",
+      "position": [
+        -2.4,
+        0,
+        -2.2
+      ],
+      "label": "B"
+    },
+    {
+      "id": "C",
+      "position": [
+        2.4,
+        0,
+        -2.2
+      ],
+      "label": "C"
+    },
+    {
+      "id": "D",
+      "position": [
+        -3.6,
+        0,
+        1.4
+      ],
+      "label": "D"
+    },
+    {
+      "id": "E",
+      "position": [
+        0,
+        0,
+        2.8
+      ],
+      "label": "E"
+    },
+    {
+      "id": "F",
+      "position": [
+        3.6,
+        0,
+        1.4
+      ],
+      "label": "F"
+    },
+    {
+      "id": "G",
+      "position": [
+        0,
+        0,
+        -4.4
+      ],
+      "label": "G"
+    }
+  ],
+  "edges": [
+    {
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "from": "A",
+      "to": "C"
+    },
+    {
+      "from": "A",
+      "to": "E"
+    },
+    {
+      "from": "B",
+      "to": "D"
+    },
+    {
+      "from": "B",
+      "to": "G"
+    },
+    {
+      "from": "C",
+      "to": "F"
+    },
+    {
+      "from": "C",
+      "to": "G"
+    },
+    {
+      "from": "D",
+      "to": "E"
+    },
+    {
+      "from": "E",
+      "to": "F"
+    }
+  ],
+  "steps": [
+    {
+      "action": "visit",
+      "target": "A",
+      "note": "Start at A — enqueue it. Queue: [A]"
+    },
+    {
+      "action": "highlight",
+      "target": "A",
+      "note": "Dequeue A — explore its neighbors"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "A",
+        "B"
+      ],
+      "note": "A → B: unvisited — enqueue. Queue: [B]"
+    },
+    {
+      "action": "visit",
+      "target": "B",
+      "note": "B discovered at distance from A via A"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "A",
+        "C"
+      ],
+      "note": "A → C: unvisited — enqueue. Queue: [B, C]"
+    },
+    {
+      "action": "visit",
+      "target": "C",
+      "note": "C discovered at distance from A via A"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "A",
+        "E"
+      ],
+      "note": "A → E: unvisited — enqueue. Queue: [B, C, E]"
+    },
+    {
+      "action": "visit",
+      "target": "E",
+      "note": "E discovered at distance from A via A"
+    },
+    {
+      "action": "mark",
+      "target": "A",
+      "note": "A fully explored"
+    },
+    {
+      "action": "highlight",
+      "target": "B",
+      "note": "Dequeue B — explore its neighbors"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "B",
+        "D"
+      ],
+      "note": "B → D: unvisited — enqueue. Queue: [C, E, D]"
+    },
+    {
+      "action": "visit",
+      "target": "D",
+      "note": "D discovered at distance from A via B"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "B",
+        "G"
+      ],
+      "note": "B → G: unvisited — enqueue. Queue: [C, E, D, G]"
+    },
+    {
+      "action": "visit",
+      "target": "G",
+      "note": "G discovered at distance from A via B"
+    },
+    {
+      "action": "mark",
+      "target": "B",
+      "note": "B fully explored"
+    },
+    {
+      "action": "highlight",
+      "target": "C",
+      "note": "Dequeue C — explore its neighbors"
+    },
+    {
+      "action": "traverse",
+      "edge": [
+        "C",
+        "F"
+      ],
+      "note": "C → F: unvisited — enqueue. Queue: [E, D, G, F]"
+    },
+    {
+      "action": "visit",
+      "target": "F",
+      "note": "F discovered at distance from A via C"
+    },
+    {
+      "action": "mark",
+      "target": "C",
+      "note": "C fully explored"
+    },
+    {
+      "action": "highlight",
+      "target": "E",
+      "note": "Dequeue E — explore its neighbors"
+    },
+    {
+      "action": "mark",
+      "target": "E",
+      "note": "E fully explored"
+    },
+    {
+      "action": "highlight",
+      "target": "D",
+      "note": "Dequeue D — explore its neighbors"
+    },
+    {
+      "action": "mark",
+      "target": "D",
+      "note": "D fully explored"
+    },
+    {
+      "action": "highlight",
+      "target": "G",
+      "note": "Dequeue G — explore its neighbors"
+    },
+    {
+      "action": "mark",
+      "target": "G",
+      "note": "G fully explored"
+    },
+    {
+      "action": "highlight",
+      "target": "F",
+      "note": "Dequeue F — explore its neighbors"
+    },
+    {
+      "action": "mark",
+      "target": "F",
+      "note": "F fully explored"
+    }
+  ]
+}
