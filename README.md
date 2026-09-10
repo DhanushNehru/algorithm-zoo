@@ -2,6 +2,9 @@
 
 **Every algorithm here is a JSON file. Add yours.**
 
+https://github.com/user-attachments/assets/508c8cf6-ebb7-469b-9fbf-2629c7fc861c
+
+
 An interactive 3D zoo of classic algorithms and data structures, built with Three.js. Each exhibit shows an algorithm actually running, step by step — quicksort physically partitioning blocks, Dijkstra's frontier lighting up a graph, a BST growing insert by insert — with a museum placard explaining what you're watching.
 
 The renderer is fully schema-driven: it knows nothing about any particular algorithm. It reads a JSON file describing nodes, edges, and a sequence of steps, and animates it. That means contributing a new algorithm is writing **one JSON file** — no Three.js, no JavaScript. See [CONTRIBUTING.md](CONTRIBUTING.md).
