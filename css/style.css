@@ -297,3 +297,35 @@ select:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   #progress-fill { transition: none; }
 }
+/* ---------- share exhibit ---------- */
+
+#btn-copy-url {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--paper);
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+#btn-copy-url:hover {
+  background: rgba(255, 172, 56, 0.12);
+  border-color: var(--amber);
+}
+
+#btn-copy-url:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+#copy-feedback {
+  display: block;
+  min-height: 1.2em;
+  margin-top: 6px;
+  color: var(--amber);
+  font-size: 0.75rem;
+}

@@ -158,6 +158,10 @@ function openExhibit(config) {
   const exhibit = new Exhibit(config, { wingColor: new THREE.Color(wing.color), origin });
   scene.add(exhibit.group);
   active = { exhibit, config, wing };
+  const url = new URL(window.location.href);
+  url.searchParams.set("exhibit", config.id);
+  history.replaceState(null, "", url);
+  ui.copyFeedback.textContent = "";
 
   // camera: stand back proportionally to exhibit size, slightly outside the ring
   const r = exhibit.boundingRadius();
@@ -192,6 +196,7 @@ function closeExhibit() {
   if (!active) return;
   active.exhibit.dispose();
   active = null;
+  ui.copyFeedback.textContent = "";
   ui.placard.hidden = true;
   ui.playbar.hidden = true;
   document.querySelectorAll(".exhibit-btn").forEach((b) => b.classList.remove("active"));
@@ -199,6 +204,11 @@ function closeExhibit() {
 
 function backToOverview() {
   closeExhibit();
+
+  const url = new URL(window.location.href);
+  url.searchParams.delete("exhibit");
+  history.replaceState(null, "", url);
+
   glideTo(OVERVIEW_POS, OVERVIEW_TARGET);
 }
 
@@ -216,7 +226,9 @@ const ui = {
   caption: document.getElementById("ex-caption"),
   progressFill: document.getElementById("progress-fill"),
   progressText: document.getElementById("progress-text"),
-  playBtn: document.getElementById("btn-play"),
+    playBtn: document.getElementById("btn-play"),
+  copyUrlBtn: document.getElementById("btn-copy-url"),
+  copyFeedback: document.getElementById("copy-feedback"),
 };
 
 function buildSidebar(configs) {
@@ -269,6 +281,18 @@ document.getElementById("btn-reset").addEventListener("click", () => { active?.e
 document.getElementById("speed").addEventListener("change", (e) => active?.exhibit.setSpeed(parseFloat(e.target.value)));
 document.getElementById("btn-overview").addEventListener("click", backToOverview);
 
+ui.copyUrlBtn.addEventListener("click", async () => {
+  if (!active) return;
+
+  try {
+    await navigator.clipboard.writeText(window.location.href);
+    ui.copyFeedback.textContent = "Link copied!";
+  } catch (err) {
+    ui.copyFeedback.textContent = "Could not copy link.";
+    console.error("Failed to copy exhibit URL:", err);
+  }
+});
+
 addEventListener("keydown", (e) => {
   if (!active || e.target.tagName === "INPUT" || e.target.tagName === "SELECT") return;
   if (e.code === "Space") { e.preventDefault(); document.getElementById("btn-play").click(); }
@@ -318,7 +342,16 @@ function tick() {
   renderer.render(scene, camera);
 }
 
-loadManifest().then(tick).catch((err) => {
+loadManifest().then(() => {
+  const exhibitId = new URLSearchParams(window.location.search).get("exhibit");
+  const sharedExhibit = manifest.find((config) => config.id === exhibitId);
+
+  if (sharedExhibit) {
+    openExhibit(sharedExhibit);
+  }
+
+  tick();
+}).catch((err) => {
   document.getElementById("load-error").hidden = false;
   document.getElementById("load-error").textContent =
     `Could not load exhibits — ${err.message}. Run a local server (npx serve or python3 -m http.server) rather than opening index.html directly.`;
