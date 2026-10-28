@@ -13,9 +13,12 @@
   --sans: "Archivo", system-ui, sans-serif;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body {
+html,
+body {
   margin: 0;
   height: 100%;
   background: var(--ink);
@@ -76,10 +79,18 @@ html, body {
   padding-right: 8px;
   scrollbar-width: thin;
   scrollbar-color: var(--line) transparent;
-  mask-image: linear-gradient(to bottom, transparent, black 12px, black calc(100% - 20px), transparent);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 12px,
+    black calc(100% - 20px),
+    transparent
+  );
   padding-block: 12px 24px;
 }
-.wing-section { margin-bottom: 18px; }
+.wing-section {
+  margin-bottom: 18px;
+}
 .wing-section h2 {
   display: flex;
   align-items: center;
@@ -90,7 +101,9 @@ html, body {
   margin: 0 0 6px;
   color: var(--paper);
 }
-.wing-section h2.empty { color: var(--paper-dim); }
+.wing-section h2.empty {
+  color: var(--paper-dim);
+}
 .wing-section .dot {
   width: 8px;
   height: 8px;
@@ -114,9 +127,13 @@ html, body {
   font: 400 0.85rem/1.4 var(--sans);
   padding: 5px 10px;
   cursor: pointer;
-  transition: color 120ms, border-color 120ms;
+  transition:
+    color 120ms,
+    border-color 120ms;
 }
-.exhibit-btn:hover { color: var(--paper); }
+.exhibit-btn:hover {
+  color: var(--paper);
+}
 .exhibit-btn.active {
   color: var(--paper);
   border-left-color: var(--amber);
@@ -138,7 +155,10 @@ select:focus-visible {
   padding: 7px 12px;
   cursor: pointer;
 }
-#btn-overview:hover { color: var(--paper); border-color: var(--paper-dim); }
+#btn-overview:hover {
+  color: var(--paper);
+  border-color: var(--paper-dim);
+}
 
 /* ---------- placard ---------- */
 
@@ -227,8 +247,13 @@ select:focus-visible {
   border-radius: 3px;
   cursor: pointer;
 }
-#playbar button:hover { background: rgba(233, 228, 216, 0.08); }
-#btn-play { font-size: 1.15rem; color: var(--amber); }
+#playbar button:hover {
+  background: rgba(233, 228, 216, 0.08);
+}
+#btn-play {
+  font-size: 1.15rem;
+  color: var(--amber);
+}
 #speed {
   background: none;
   border: 1px solid var(--line);
@@ -237,7 +262,9 @@ select:focus-visible {
   font: 500 0.8rem var(--sans);
   padding: 5px 6px;
 }
-#speed option { background: #12161f; }
+#speed option {
+  background: #12161f;
+}
 #progress {
   width: 160px;
   height: 3px;
@@ -275,29 +302,110 @@ select:focus-visible {
   line-height: 1.5;
 }
 
-/* ---------- small screens ---------- */
+/* ---------- small screens & responsive ---------- */
 
 @media (max-width: 900px) {
-  #masthead { max-width: 240px; }
-  #index { display: none; }
-  #placard {
-    right: 12px;
-    left: 12px;
-    top: auto;
-    bottom: 90px;
-    transform: none;
-    width: auto;
-    max-height: 40vh;
-    overflow-y: auto;
+  #masthead {
+    max-width: 260px;
+    top: 20px;
+    left: 20px;
   }
-  #playbar { bottom: 12px; width: calc(100% - 24px); justify-content: center; }
-  #progress { width: 90px; }
+  #index {
+    top: 110px;
+    left: 20px;
+    width: 200px;
+  }
+  #placard {
+    right: 20px;
+    top: auto;
+    bottom: 84px;
+    transform: none;
+    width: 290px;
+    max-height: 45vh;
+    overflow-y: auto;
+    padding: 18px 20px;
+  }
+  #playbar {
+    bottom: 16px;
+    width: auto;
+    max-width: calc(100% - 40px);
+    justify-content: center;
+  }
+  #progress {
+    width: 120px;
+  }
+}
+
+@media (max-width: 680px) {
+  #index {
+    display: none;
+  }
+  #placard {
+    left: 12px;
+    right: 12px;
+    width: auto;
+    bottom: 80px;
+    max-height: 35vh;
+    padding: 14px 16px;
+  }
+  #playbar {
+    bottom: 12px;
+    width: calc(100% - 24px);
+    justify-content: center;
+    padding: 8px 12px;
+  }
+  #progress {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  #masthead {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    max-width: none;
+  }
+  #masthead h1 {
+    font-size: 1.35rem;
+    margin-bottom: 3px;
+  }
+  #masthead p {
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+  #placard h2 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+  .complexity {
+    gap: 16px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+  }
+  #ex-desc {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  #ex-caption {
+    font-size: 0.78rem;
+    padding-left: 8px;
+  }
+  #playbar button {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #progress-fill { transition: none; }
+  #progress-fill {
+    transition: none;
+  }
 }
-/* ---------- share exhibit ---------- */
+
+/* --------- share exhibit --------- */
 
 #btn-copy-url {
   margin-top: 12px;
@@ -309,7 +417,9 @@ select:focus-visible {
   font: inherit;
   font-size: 0.8rem;
   cursor: pointer;
-  transition: background 160ms ease, border-color 160ms ease;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
 }
 
 #btn-copy-url:hover {
@@ -328,4 +438,39 @@ select:focus-visible {
   margin-top: 6px;
   color: var(--amber);
   font-size: 0.75rem;
+}
+
+/* Responsive overlays: tablet & mobile */
+@media (max-width: 850px) {
+  #index {
+    display: none !important;
+  }
+
+  .back-button,
+  button:has-text("Back to overview"),
+  [id*="back"] {
+    position: fixed !important;
+    top: 16px !important;
+    left: 16px !important;
+    bottom: auto !important;
+    z-index: 100 !important;
+  }
+
+  #playbar {
+    position: fixed !important;
+    bottom: 16px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    max-width: 90vw !important;
+    z-index: 90 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #playbar {
+    bottom: 10px !important;
+    padding: 6px 10px !important;
+    transform: translateX(-50%) scale(0.9) !important;
+  }
 }
